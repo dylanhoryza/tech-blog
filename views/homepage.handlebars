@@ -1,4 +1,20 @@
+{{#each blogs as |blog| }}
 <div class="container">
+  <div class="row">
+    <div class="col-md-12 mx-auto mt-4">
+      <div class="card custom-card">
+        <div class="card-body">
+          <h3 class="card-title">{{blog.title}}</h3>
+          <h4 class="card-subtitle mb-2 text-muted">Posted by {{blog.user.name}} on {{format_date blog.date_created}}</h4>
+          <p class="card-text">{{blog.description}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{{/each}}
+
+{{!-- <div class="container">
   <div class="row">
     <div class="col-md-12 mx-auto mt-4">
       <div class="card custom-card">
@@ -10,4 +26,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> --}}
