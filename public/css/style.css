@@ -70,5 +70,51 @@ header {
   background-color: black;
 }
 
+#email, #password {
+  font-size: 20px;
+}
+
+label {
+  font-size: 20px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.login-btn {
+display: flex;
+justify-content: center;
+}
+
+.btn {
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: grey;
+  color: white;
+}
+
+#sign-up-text {
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.sign-up {
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.new-post-btn{
+  display: flex;
+  justify-content: center;
+}
+
+.new-btn {
+  width: 150px;
+  height: 50px;
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+}
+
 
 
