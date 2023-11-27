@@ -1,0 +1,43 @@
+body {
+  background-color: rgb(123, 214, 123);
+}
+
+
+nav {
+  display: flex;
+  justify-content: flex-start;
+  background-color: transparent;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: rgb(123, 214, 123);
+  padding: 20px 20px;
+  text-decoration: none;
+  text-align: center;
+  font-size: 24px;
+}
+
+nav a:hover {
+  cursor: pointer;
+  color: white;
+}
+
+.tech-blog-header {
+  font-size: 30px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+  padding: 5px 20px;
+  border-style: solid;
+  border-color: black;
+  border-radius: 10px;
+  width: 250px;
+  background-color: rgb(123, 214, 123);
+  box-shadow: 4px 3px 1px rgba(179, 176, 176, 0.7);
+}
+
+header {
+  background-color: black;
+  height: 130px;
+}
