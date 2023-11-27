@@ -41,3 +41,34 @@ header {
   background-color: black;
   height: 130px;
 }
+
+.card-title {
+  background-color: black;
+  color: white;
+  font-size: 24px;
+  margin-bottom: 0;
+}
+
+.custom-card {
+  border: none;
+ 
+}
+
+.card-body {
+  background-color: rgb(123, 214, 123);
+  border: black;
+  border-style: solid;
+  padding: 0;
+}
+
+.card-text {
+  font-size: 20px;
+}
+
+.card-subtitle {
+  text-align: end;
+  background-color: black;
+}
+
+
+
