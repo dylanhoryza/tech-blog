@@ -17,7 +17,7 @@
       <a href="/">Home</a>
       <a href="/dashboard">Dashboard</a>
       <a href="/login">Login</a>
-      <a href="/logout">Logout</a>
+      <a href="/logout" id="logout-link">Logout</a>
      </nav>
     <h1 class="tech-blog-header">
       The Tech Blog
@@ -27,5 +27,9 @@
       <!-- Render the sub layout -->
       {{{ body }}}
     </main>
+</body>
+  {{#if logged_in}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
 </body>
 </html>
