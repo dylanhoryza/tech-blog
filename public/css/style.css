@@ -70,7 +70,7 @@ header {
   background-color: black;
 }
 
-#email, #password {
+#email, #password, #email-signup, #password-signup {
   font-size: 20px;
 }
 
