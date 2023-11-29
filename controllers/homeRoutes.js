@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
       include: [
         {
           model: User,
-          attributes: ['name'],
+          // attributes: ['name'],
         },
       ],
     });
@@ -16,21 +16,20 @@ router.get('/', async (req, res) => {
     const blogs = blogData.map((blog) => blog.get({ plain: true }));
 
     res.render('homepage', {
-      blogs
+      blogs,
       // logged_in: req.session.logged_in
     });
-} catch (err) {
-  res.status(500).json(err);
-}
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
-
 
 router.get('/login', (req, res) => {
   if (req.session.logged_in) {
     res.redirect('/dashboard');
     return;
   }
-  res.render('login')
+  res.render('login');
 });
 
 router.get('/signup', (req, res) => {
@@ -38,15 +37,28 @@ router.get('/signup', (req, res) => {
     res.redirect('/dashboard');
     return;
   }
-  res.render('signup')
+  res.render('signup');
 });
 
-router.get('/dashboard', (req, res) => {
-  res.render('dashboard')
+router.get('/dashboard', withAuth, async (req, res) => {
+  try {
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
+      include: [{ model: Blog }],
+    });
+    const user = userData.get({ plain: true });
+    console.log(user);
+    res.render('dashboard', {
+      ...user,
+      logged_in: true,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 router.get('/logout', (req, res) => {
-  res.redirect('/')
+  res.redirect('/');
 });
 
 module.exports = router;
