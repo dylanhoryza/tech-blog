@@ -17,7 +17,9 @@
       <a href="/">Home</a>
       <a href="/dashboard">Dashboard</a>
       <a href="/login">Login</a>
+      {{#if logged_in}}
       <a href="/logout" id="logout-link">Logout</a>
+      {{/if}}
      </nav>
     <h1 class="tech-blog-header">
       The Tech Blog
