@@ -1,45 +1,102 @@
 {{#if blogs.length}}
 
-<div class="container">
-  {{#each blogs as |blog|}}
-  <div class="row">
-    <div class="col-md-12 mx-auto mt-4">
-      <div class="card custom-card">
-        <div class="card-body">
-          <h3 class="card-title">{{blog.title}}</h3>
-          <h4 class="card-subtitle mb-2 text-muted">Posted by {{blog.user.name}} on {{format_date blog.date_created}}</h4>
-          <p class="card-text">{{blog.description}}</p>
+  <div class='container'>
+    {{#each blogs as |blog|}}
+      <div class='row'>
+        <div class='col-md-12 mx-auto mt-4'>
+          <div class='card custom-card'>
+            <div class='card-body'>
+              <h3 class='card-title'>{{blog.title}}</h3>
+              <h4 class='card-subtitle mb-2 text-muted'>Posted by
+                {{blog.user.name}}
+                on
+                {{format_date blog.date_created}}</h4>
+              <p class='card-text'>{{blog.description}}</p>
+              <div class='btn-group'>
+                <button
+                  class='btn btn-primary update-blog'
+                  data-blog-id='{{blog.id}}'
+                >Update</button>
+                <button
+                  class='btn btn-danger delete-blog'
+                  data-blog-id='{{blog.id}}'
+                >Delete</button>
+              </div>
+              {{!-- <div class='new-post-section'> --}}
+
+                <div class='row hide' id='updateSection'>
+                  <div class='col-md-12 mx-auto mt-4'>
+                    <div class='card custom-card'>
+                      <div class='card-body'>
+                        <h3 class='card-title'>Update Blog</h3>
+                        <div class='form-group'>
+                          <label for='blog-title'>Title:</label>
+                          <input
+                            type='text'
+                            class='form-control'
+                            id='blog-title-update-{{blog.id}}'
+                            placeholder='Enter Title'
+                          />
+                        </div>
+                        <div class='form-group'>
+                          <label for='blog-content'>Content:</label>
+                          <input
+                            type='text'
+                            class='form-control'
+                            id='blog-content-update-{{blog.id}}'
+                            placeholder='Enter Content'
+                          />
+                        </div>
+                        <button class='post-update-btn' data-blog-id="{{blog.id}}">Update</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              {{!-- </div> --}}
+
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    {{/each}}
+
   </div>
-  {{/each}}
-</div>
 
 {{/if}}
-<div class="new-post-section">
-  <div class="new-post-btn">
-    <button class="new-btn">+ New Post</button>
-  </div>
-  <div class="row hide" id="contentSection">
-    <div class="col-md-12 mx-auto mt-4">
-      <div class="card custom-card">
-        <div class="card-body">
-          <h3 class="card-title">Create New Post</h3>
-          <div class="form-group">
-            <label for="blog-title">Title:</label>
-            <input type="text" class="form-control" id="blog-title" placeholder="Enter Title">
+<div class='new-post-section'>
+
+  <div class='row hide' id='contentSection'>
+    <div class='col-md-12 mx-auto mt-4'>
+      <div class='card custom-card'>
+        <div class='card-body'>
+          <h3 class='card-title'>Create New Post</h3>
+          <div class='form-group'>
+            <label for='blog-title'>Title:</label>
+            <input
+              type='text'
+              class='form-control'
+              id='blog-title'
+              placeholder='Enter Title'
+            />
           </div>
-          <div class="form-group">
-            <label for="blog-content">Content:</label>
-            <input type="text" class="form-control" id="blog-content" placeholder="Enter Content">
+          <div class='form-group'>
+            <label for='blog-content'>Content:</label>
+            <input
+              type='text'
+              class='form-control'
+              id='blog-content'
+              placeholder='Enter Content'
+            />
           </div>
-          <button class="post-submit-btn">Submit</button>
+          <button class='post-submit-btn'>Submit</button>
         </div>
       </div>
     </div>
   </div>
+  <div class='new-post-btn'>
+    <button class='new-btn'>+ New Post</button>
+  </div>
 </div>
 
-
-<script src="/js/dashboard.js"></script>
+<script src='/js/dashboard.js'></script>
