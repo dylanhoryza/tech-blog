@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+
 submitButtons.forEach(submitButton => {
   submitButton.addEventListener('click', async function(event) {
     event.preventDefault();
@@ -56,6 +57,10 @@ deleteButtons.forEach(deleteButton => {
 
   })
 })
+
+
+
+
 
 });
 
@@ -146,6 +151,7 @@ async function getBlogId() {
 
 getBlogId();
 
+// delete blog 
 async function deleteBlog() {
   try {
     const blogIds = await getBlogId();
@@ -163,4 +169,6 @@ async function deleteBlog() {
     alert('Error occured while deleting budget');
   }
 }
+
+
 
