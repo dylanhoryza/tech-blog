@@ -10,6 +10,23 @@
           <h3 class="card-title">{{blog.title}}</h3>
           <h4 class="card-subtitle mb-2 text-muted">Posted by {{blog.user.name}} on {{format_date blog.date_created}}</h4>
           <p class="card-text">{{blog.description}}</p>
+          <button class="add-comment-btn" data-blog-id="{{blog.id}}">Add Comment</button>
+          <div class="comment-form hide" id="commentForm">
+            <form id="commentForm" data-blog-id="{{blog.id}}">
+              <div class="form-group">
+                <label for="comment">Comment:</label>
+                <textarea class="form-control" id="comment-{{blog.id}}" rows="3"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary submit-comment" data-blog-id="{{blog.id}}">Submit</button>
+            </form>
+          </div>
+          {{#if comments.length }}
+              <div class="comment-section" id="commentSection-{{blog.id}}">
+                {{#each comments as |comment| }}
+            <!-- Existing comments can be rendered here -->
+          </div>
+          {{/each}}
+          {{/if}}
         </div>
       </div>
     </div>
@@ -17,18 +34,9 @@
   {{/each}}
 </div>
 
+
 {{/if}}
 
-{{!-- <div class="container">
-  <div class="row">
-    <div class="col-md-12 mx-auto mt-4">
-      <div class="card custom-card">
-        <div class="card-body">
-          <h3 class="card-title">Why MVC is so important</h3>
-          <h4 class="card-subtitle mb-2 text-muted">Posted by Dylan on 11/27/23</h4>
-          <p class="card-text">sdkfhsajkhflshfjshafdsahgljshgljshdgjlsdhgjsahdgjsahdgjhasdjghsdjghsjghsdghjsdahg djg;skdj;jga;kjg;dkfgj</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> --}}
+
+<script src='/js/homepage.js'></script>
+
