@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Blog } = require('../../models');
+const { Blog, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.post('/', withAuth, async (req, res) => {
@@ -37,6 +37,38 @@ router.get('/allblogs', async (req, res) => {
   }
 })
 
+router.delete('/:blogId', async (req, res) => {
+  try {
+    const blogData = await Blog.destroy({
+      where: {
+        id: req.params.blogId,
+        user_id: req.session.user_id,
+      },
+    });
+
+    if (!blogData) {
+      res.status(404).json({ message: 'No budget found with this id!' });
+      return;
+    }
+
+    res.status(200).json(blogData);
+  } catch (err) {
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+router.get('/userblog/', async (req, res) => {
+  try {
+    const userBlogData = await User.findOne({
+      where: {id: req.session.user_id},
+      include: [Blog]
+    })
+    res.status(200).json(userBlogData);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json(error);
+  }
+})
 
 
 module.exports = router;
