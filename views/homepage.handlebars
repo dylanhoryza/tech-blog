@@ -20,11 +20,17 @@
               <button type="submit" class="btn btn-primary submit-comment" data-blog-id="{{blog.id}}">Submit</button>
             </form>
           </div>
+          <div class="comment-section" id="commentSection-{{blog.id}}"></div>
           {{#if comments.length }}
-              <div class="comment-section" id="commentSection-{{blog.id}}">
+              
                 {{#each comments as |comment| }}
-            <!-- Existing comments can be rendered here -->
+            <div class="card custom-card">
+        <div class="card-body">
+          <h3 class="card-title"></h3>
+          {{!-- <h4 class="card-subtitle mb-2 text-muted">Posted by {{comment.user.name}} on {{format_date comment.date_created}}</h4> --}}
+          <p class="card-text">{{comment.text}}</p>
           </div>
+            </div>
           {{/each}}
           {{/if}}
         </div>

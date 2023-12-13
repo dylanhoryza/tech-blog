@@ -14,7 +14,8 @@ router.get('/', async (req, res) => {
     });
 
     const commentData = await Comment.findAll({
-      include: [{ model: User }]
+     
+      include: [{ model: Blog }]
     })
 
     // const commentData = await Comment.findAll({

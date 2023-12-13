@@ -47,6 +47,8 @@ header {
   color: white;
   font-size: 24px;
   margin-bottom: 0;
+  
+ 
 }
 
 .custom-card {
@@ -58,16 +60,21 @@ header {
   background-color: rgb(123, 214, 123);
   border: black;
   border-style: solid;
+  border-width: 4px;
   padding: 0;
+  border-radius: 5px;
 }
 
 .card-text {
   font-size: 20px;
+  margin-left: 5px;
 }
 
 .card-subtitle {
   text-align: end;
   background-color: black;
+  padding-bottom: 5px;
+ 
 }
 
 #email, #password, #email-signup, #password-signup {
@@ -106,6 +113,7 @@ justify-content: center;
 .new-post-btn{
   display: flex;
   justify-content: center;
+  margin-top: 10px;
 }
 
 .new-btn {
@@ -121,3 +129,41 @@ justify-content: center;
   display: none;
 }
 
+.post-submit-btn {
+  width: 100%;
+  background-color: grey;
+  height: 40px;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.btn-group{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.update-blog, .delete-blog {
+margin-left: 10px;
+margin-right: 10px;
+border-radius: 5px;
+}
+
+.update-blog {
+  background-color: blue;
+}
+
+.delete-blog {
+  background-color: red;;
+}
+
+.add-comment-btn {
+  background-color: grey;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  margin-left: 5px;
+  margin-bottom: 10px;
+}
