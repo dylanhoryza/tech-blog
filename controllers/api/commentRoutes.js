@@ -8,11 +8,20 @@ router.post('/', async (req, res) => {
       ...req.body,
       user_id: req.session.user_id,
       }, {
-        include: [Blog],
+        // include: [Blog],
       });
     res.status(200).json(newComment);
   } catch (error) {
     res.status(400).json(error);
+  }
+})
+
+router.get('/allcomments', async (req, res) => {
+  try {
+    const commentData = await Comment.findAll()
+    res.json(commentData);
+  } catch (error) {
+    res.status(500).json(error);
   }
 })
 
