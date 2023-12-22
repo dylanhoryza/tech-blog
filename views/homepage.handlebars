@@ -1,4 +1,4 @@
-
+{{!-- 
 {{#if blogs.length}}
 
 <div class="container">
@@ -12,8 +12,9 @@
           <p class="card-text">{{blog.description}}</p>
           <button class="add-comment-btn" data-blog-id="{{blog.id}}">Add Comment</button>
           <div class="comment-form hide" id="commentForm">
-            <form id="commentForm" data-blog-id="{{blog.id}}">
+            <form id="commentForm">
               <div class="form-group">
+                <input type="hidden" name="blog-id" value="{{blog.id}}" />
                 <label for="comment">Comment:</label>
                 <textarea class="form-control" id="comment-{{blog.id}}" rows="3"></textarea>
               </div>
@@ -28,7 +29,7 @@
         <div class="card-body">
           <h3 class="card-title"></h3>
           {{!-- <h4 class="card-subtitle mb-2 text-muted">Posted by {{comment.user.name}} on {{format_date comment.date_created}}</h4> --}}
-          <p class="card-text">{{comment.text}}</p>
+          {{!-- <p class="card-text">{{comment.text}}</p>
           </div>
             </div>
           {{/each}}
@@ -41,8 +42,71 @@
 </div>
 
 
+{{/if}} --}} 
+
+{{#if blogs.length}}
+  <div class="container">
+    {{#each blogs as |blog| }}
+      <div class="row">
+        <div class="col-md-12 mx-auto mt-4">
+          <div class="card custom-card">
+            <div class="card-body">
+              <h3 class="card-title">{{blog.title}}</h3>
+              <h4 class="card-subtitle mb-2 text-muted">Posted by {{blog.User.name}} on {{format_date blog.date_created}}</h4>
+              <p class="card-text">{{blog.description}}</p>
+              <button class="add-comment-btn" data-blog-id="{{blog.id}}">Add Comment</button>
+              <div class="comment-form hide" id="commentForm-{{blog.id}}">
+                <form>
+                  <div class="form-group">
+                    <input type="hidden" name="blog-id" value="{{blog.id}}" />
+                    <label for="comment">Comment:</label>
+                    <textarea class="form-control" id="comment-{{blog.id}}" rows="3"></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-primary submit-comment" data-blog-id="{{blog.id}}">Submit</button>
+                </form>
+              </div>
+              <div class="comment-section" id="commentSection-{{blog.id}}">
+                {{#if blog.comments.length }}
+                  {{#each blog.comments as |comment| }}
+                    <div class="card custom-card">
+                      <div class="card-body">
+                        {{!-- <h3 class="card-title"></h3> --}}
+                        {{!-- <h4 class="card-subtitle mb-2 text-muted">Posted by {{comment.User.name}} on {{format_date comment.date_created}}</h4> --}}
+                        <p class="card-text">{{comment.text}}</p>
+                      </div>
+                    </div>
+                  {{/each}}
+                {{else}}
+                  <p>No comments yet</p>
+                {{/if}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+{{else}}
+  <p>No blogs available</p>
 {{/if}}
 
 
+
 <script src='/js/homepage.js'></script>
+
+{{!-- <form id="new-comment-form" class="card">
+    <div class="card-header">
+      <h3>Add New Comment</h3>
+    </div>
+
+    <div class="card-body">
+      <input type="hidden" name="post-id" value="{{post.id}}" />
+
+      <label class="form-label" for="comment-body">Comment</label>
+
+      <textarea name="comment-body" class="form-input"></textarea>
+
+      <button type="submit" class="btn">Submit</button>
+    </div>
+  </form> --}}
 

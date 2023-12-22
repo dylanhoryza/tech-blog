@@ -7,35 +7,74 @@ router.get('/', async (req, res) => {
     const blogData = await Blog.findAll({
       include: [
         {
-          model: User,
+          model: User
+          
           // attributes: ['name'],
         },
       ],
     });
 
-    const commentData = await Comment.findAll({
-     
-      include: [{ model: Blog }]
-    })
-
     // const commentData = await Comment.findAll({
-    //   where: { user_id: req.session.user_id },
-    //   include: [{ model: Blog, attributes: ['id'] }],
-    // });
+     
+    //   // where: { user_id: req.session.user_id },
+    // })
+
+    const commentData = await Comment.findAll({
+      where: { user_id: req.session.user_id },
+      include: [{ model: Blog}],
+    });
 
     const comments = commentData.map((comment) => comment.get({ plain: true }));
-
+    console.log(comments);
     const blogs = blogData.map((blog) => blog.get({ plain: true }));
-
+    console.log(blogs);
     res.render('homepage', {
       blogs,
       comments
-      // logged_in: req.session.logged_in
+      
     });
   } catch (err) {
     res.status(500).json(err);
   }
 });
+
+// router.get('/', async (req, res) => {
+//   try {
+//     const blogData = await Blog.findAll({
+//       include: [
+//         {
+//           model: User,
+//           // attributes: ['name'],
+//         },
+//         {
+//           model: Comment, // Include comments related to each blog
+//           include: [{ model: User }], // Optionally include user information for each comment
+//         },
+//       ],
+//     });
+
+//     // Optionally, if you want comments for a specific user, you can use this approach
+//     // const commentData = await Comment.findAll({
+//     //   where: { user_id: req.session.user_id },
+//     //   include: [{ model: Blog, attributes: ['id'] }],
+//     // });
+
+//     const blogs = blogData.map((blog) => {
+//       const plainBlog = blog.get({ plain: true });
+//       // Extract comments for each blog and attach them to the plainBlog object
+//       plainBlog.comments = plainBlog.Comments.map((comment) => comment.get({ plain: true }));
+//       delete plainBlog.Comments; // Remove the Comments array from the plainBlog object
+//       return plainBlog;
+//     });
+
+//     res.render('homepage', {
+//       blogs,
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
+
 
 router.get('/login', (req, res) => {
   if (req.session.logged_in) {
