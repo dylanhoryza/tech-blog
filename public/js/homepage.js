@@ -51,7 +51,7 @@ async function postComment(blogId) {
 
       newComment.innerHTML = `
         <div class="card-body">
-          <p class="card-text">${newCommentData.text}</p>
+          <p class="card-text comment-text">${newCommentData.text}</p>
         </div>
       `;
 
