@@ -18,7 +18,9 @@ router.post('/', async (req, res) => {
 
 router.get('/allcomments', async (req, res) => {
   try {
-    const commentData = await Comment.findAll()
+    const commentData = await Comment.findAll({
+      include: {model: Blog},
+    })
     res.json(commentData);
   } catch (error) {
     res.status(500).json(error);
