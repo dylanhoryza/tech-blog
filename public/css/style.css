@@ -63,6 +63,12 @@ header {
   border-width: 4px;
   padding: 0;
   border-radius: 5px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8); 
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.card-body:hover {
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.6);
 }
 
 .card-text {
@@ -160,10 +166,30 @@ border-radius: 5px;
 }
 
 .add-comment-btn {
-  background-color: grey;
+  background-color: black;
   color: white;
   padding: 5px;
   border-radius: 5px;
   margin-left: 5px;
   margin-bottom: 10px;
+}
+
+.add-comment-btn:hover, .post-update-btn:hover {
+  background-color: grey;
+}
+
+.comment-text {
+  padding: 20px;
+  
+}
+
+
+.post-update-btn {
+  background-color: black;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  margin-left: 5px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
