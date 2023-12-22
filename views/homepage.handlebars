@@ -7,7 +7,7 @@
           <div class="card custom-card">
             <div class="card-body">
               <h3 class="card-title">{{blog.title}}</h3>
-              <h4 class="card-subtitle mb-2 text-muted">Posted by {{blog.User.name}} on {{format_date blog.date_created}}</h4>
+              <h4 class="card-subtitle mb-2 text-muted">Posted by {{blog.user.name}} on {{format_date blog.date_created}}</h4>
               <p class="card-text">{{blog.description}}</p>
               <button class="add-comment-btn" data-blog-id="{{blog.id}}">Add Comment</button>
               <div class="comment-form hide" id="commentForm-{{blog.id}}">
